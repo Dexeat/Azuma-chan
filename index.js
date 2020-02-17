@@ -1,10 +1,13 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+//lis le token
 var fs = require('fs');
 var token = fs.readFileSync('token.txt').toString()
 
+//pour les commandes
 const PREFIX = "!";
 
+//si erreur
 function sendError(message, description){
     message.channel.send({embed:{
         color: 15158332,
@@ -14,12 +17,16 @@ function sendError(message, description){
     })
 }
 
+//quand le bot se conecte 
 bot.on('ready',function(){
     console.log("je suis pret")
 });
 
+//lis l'event des messages
 bot.on('message', message => {
-    console.log(message.author+' '+message.content);
+    //renvoie tous les messages des users sur tous les serveur ajouté
+    console.log(message.guild +' '+message.author+' '+message.content);
+
     if(message.content[0] === PREFIX) {
         let splitMessage = message.content.split(" ");
         if(splitMessage[0] === '!aide'){
