@@ -20,12 +20,21 @@ function sendError(message, description){
 //quand le bot se conecte 
 bot.on('ready',function(){
     console.log("je suis pret")
+
+    bot.user.setPresence({
+        game: {
+            name: 'AzurLane',
+            type:  'PLAYING'
+        },
+        status: 'dnd'
+    })
+
 });
 
 //lis l'event des messages
 bot.on('message', message => {
     //renvoie tous les messages des users sur tous les serveur ajouté
-    console.log(message.guild +' '+message.author+' '+message.content);
+    console.log(message.guild +' '+ message.author+' '+message.content);
 
     if(message.content[0] === PREFIX) {
         let splitMessage = message.content.split(" ");
