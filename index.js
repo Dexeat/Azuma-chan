@@ -21,6 +21,9 @@ function sendError(message, description){
 bot.on('ready',function(){
     console.log("je suis pret")
 
+    var Serveurs = bot.guilds;
+    //console.log(Serveurs);
+
     bot.user.setPresence({
         game: {
             name: 'AzurLane',
@@ -46,7 +49,11 @@ bot.on('message', message => {
                 sendError(message, 'Erreur, problème dans les paramètres');
             //message.reply('Oui ?')
         }
+    if (message.content === '!invite'){
+        message.reply('https://discordapp.com/oauth2/authorize?client_id=679005239860264964&scope=bot&permissions=8')
     }
+    }
+    
 });
 
 bot.login(token)
