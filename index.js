@@ -56,4 +56,16 @@ bot.on('message', message => {
     
 });
 
+bot.on('messageReactionAdd',(reaction, user) => {
+    if (reaction.emoji.name === "⬅️"){
+        console.log('oui left')
+        bot.channels.get("521409427526385675").send(':arrow_left:');
+    }
+    if (reaction.emoji.name === "➡️") {
+        console.log('oui right')
+        bot.channels.get("521409427526385675").send(':arrow_right:');
+    }
+});
+
+
 bot.login(token)
